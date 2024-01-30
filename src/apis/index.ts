@@ -9,6 +9,6 @@ const router = express.Router();
 router.use('/api/users', userController);
 router.use('/api/merchants', merchantController);
 router.use('/api/products', productController);
-router.use('/api/product/category', createProductCategory);
+router.use('/api/product/categories', createProductCategory);
 
 export default router;
