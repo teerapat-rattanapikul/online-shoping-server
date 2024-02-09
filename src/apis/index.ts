@@ -6,9 +6,9 @@ import createProductCategory from './productCategory'
 
 const router = express.Router();
 
-router.use('/api/users', userController);
-router.use('/api/merchants', merchantController);
-router.use('/api/products', productController);
-router.use('/api/product/categories', createProductCategory);
+router.use('/users', userController);
+router.use('/merchants', merchantController);
+router.use('/products', productController);
+router.use('/product/categories', createProductCategory);
 
 export default router;

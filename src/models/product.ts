@@ -9,6 +9,8 @@ export interface IProduct extends Document {
   productImage?: string;
   merchant: IMerchant;
   productCategory: IProductCategory;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 const productSchema: Schema = new Schema({
@@ -25,10 +27,21 @@ const productSchema: Schema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'ProductCategory',
     require: true
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+    required: true
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now,
+    required: true
   }
 });
 
 productSchema.post('save', async function (doc, next) {
+  this.updatedAt = new Date();
   try {
     await mongoose.model('Merchant').updateOne(
       { _id: doc.merchant },

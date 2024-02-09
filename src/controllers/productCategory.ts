@@ -19,7 +19,7 @@ const createProductCategory = async (req: Request, res: Response, next: NextFunc
   }
 }
 
-const inquiryProductCategoryList = async (_req: Request, res: Response, next: NextFunction) => {
+const inquiryProductCategoryLanding = async (_req: Request, res: Response, next: NextFunction) => {
   try {
     const result = await ProductCategory.find().limit(5).populate('products')
 
@@ -29,7 +29,18 @@ const inquiryProductCategoryList = async (_req: Request, res: Response, next: Ne
   }
 }
 
+const inquiryAllProductCategoryList = async (_req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await ProductCategory.find().select('_id, productCategoryName')
+
+    res.json(result)
+  } catch (error) {
+    next(error)
+  }
+}
+
 export {
   createProductCategory,
-  inquiryProductCategoryList
+  inquiryProductCategoryLanding,
+  inquiryAllProductCategoryList
 }

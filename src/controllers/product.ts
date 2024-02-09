@@ -24,6 +24,19 @@ const createProduct = async (req: Request, res: Response, next: NextFunction) =>
   }
 }
 
+const inquiryByMerchantId = async (req: Request, res: Response, next: NextFunction) => {
+  const { id } = req.params
+
+  try {
+    const productList = await Product.find().where('merchant').equals(id).sort({createdAt: 'desc'})
+
+    res.json(productList)
+  } catch (error) {
+    next(error)
+  }
+}
+
 export {
-  createProduct
+  createProduct,
+  inquiryByMerchantId
 }

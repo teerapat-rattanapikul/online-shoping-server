@@ -1,9 +1,10 @@
 import express from 'express';
-import { createProductCategory, inquiryProductCategoryList } from '../controllers/productCategory'
+import { createProductCategory, inquiryProductCategoryLanding, inquiryAllProductCategoryList } from '../controllers/productCategory'
 
 const router = express.Router();
 
 router.post('/create', createProductCategory);
-router.get('/', inquiryProductCategoryList);
+router.get('/dashboard', inquiryProductCategoryLanding);
+router.get('/master', inquiryAllProductCategoryList)
 
 export default router;

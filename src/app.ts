@@ -23,7 +23,7 @@ app.get('/', (_req: Request, res: Response) => {
   })
 })
 
-app.use(apis)
+app.use('/api', apis)
 
 app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
   console.error(err);
